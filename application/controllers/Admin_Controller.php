@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 	class Admin_Controller extends CI_Controller 
 	{
 		function __construct() 
@@ -33,7 +33,6 @@
 							$session_data = array(
 								'username' => $result[0]->name
 							);
-							echo $session_data;
 							$this->session->set_userdata('logged_in', $session_data);
 							redirect('dashboard');
 						}
@@ -52,11 +51,7 @@
 			$data = array();
 			if(isset($this->session->userdata['logged_in']))
 			{
-				$data['title_page'] = 'Admin';
-				$this->load->view('templates/header_dashboard', $data);
-				$this->load->view('admin/dashboard');
-				$this->load->view('templates/footer');
-				
+				redirect('dashboard/home');//redirect to dashboard controller
 			}else
 				{
 					$data['title_page'] = 'Login';
