@@ -1,4 +1,3 @@
-/* login form validation */
 function validateEntries() 
 {
 	
@@ -19,3 +18,4 @@ function validateEntries()
 	}	
 	return true;
 }
+
