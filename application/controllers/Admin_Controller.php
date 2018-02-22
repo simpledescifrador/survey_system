@@ -1,61 +1,72 @@
 <?php
-	class Admin_Controller extends CI_Controller {
-		function __construct() {
+	class Admin_Controller extends CI_Controller 
+	{
+		function __construct() 
+		{
 			parent::__construct();
 			$this->load->library('form_validation');
 			$this->load->model('admin');
 		}
-		public function loginAuth() {
+		public function loginAuth() 
+		{
 			$data = array();	
 			$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[20]');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
 			
-			if ($this->form_validation->run() == FALSE) {
+			if ($this->form_validation->run() == FALSE) 
+			{
 				$this->session->set_flashdata('validate_msg', validation_errors());
 				redirect('/');
-			} else {
-				//getting value from the login form
-				$data['username'] = $this->input->post('username');
-				$data['password'] = $this->input->post('password');
-				$result = $this->admin->login($data);//get data from admin model
+			} else 
+				{
+					//getting value from the login form
+					$data['username'] = $this->input->post('username');
+					$data['password'] = $this->input->post('password');
+					$result = $this->admin->login($data);//get data from admin model
 				
-				if($result){
-					$username = $this->input->post('username');
-					$result = $this->admin->readAdminInfo($username);
-					
-					if($result){
-						$session_data = array(
-							'username' => $result[0]->name
-						);
-						echo $session_data;
-						$this->session->set_userdata('logged_in', $session_data);
-						redirect('dashboard');
-					}
-				}else{
-					$data['error_msg'] = 'Invalid Username or Password';
-					$this->session->set_flashdata('error_msg', $data['error_msg']);
-					redirect('/');
+					if($result)
+					{
+						$username = $this->input->post('username');
+						$result = $this->admin->readAdminInfo($username);
+						
+						if($result){
+							$session_data = array(
+								'username' => $result[0]->name
+							);
+							echo $session_data;
+							$this->session->set_userdata('logged_in', $session_data);
+							redirect('dashboard');
+						}
+					}else
+						{
+							$data['error_msg'] = 'Invalid Username or Password';
+							$this->session->set_flashdata('error_msg', $data['error_msg']);
+							redirect('/');
+						}
 				}
-			}
 			
 	
 		}
-		public function dashboard() {
+		public function dashboard() 
+		{
 			$data = array();
-			if(isset($this->session->userdata['logged_in'])){
+			if(isset($this->session->userdata['logged_in']))
+			{
 				$data['title_page'] = 'Admin';
 				$this->load->view('templates/header_dashboard', $data);
 				$this->load->view('admin/dashboard');
 				$this->load->view('templates/footer');
 				
-			}else{
-				$data['title_page'] = 'Login';
-				$this->load->view('templates/header', $data);
-				$this->load->view('admin/login');
-				$this->load->view('templates/footer');
-			}
+			}else
+				{
+					$data['title_page'] = 'Login';
+					$this->load->view('templates/header', $data);
+					$this->load->view('admin/login');
+					$this->load->view('templates/footer');
+				}
 		}
-		public function logout() {
+		public function logout() 
+		{
 			// Removing session data
 			$sess_array = array(
 				'username' => ''
@@ -64,6 +75,6 @@
 			$data['display_msg'] = 'Successfully Logout';
 			$this->session->set_flashdata('display_msg', $data['display_msg']);
 			redirect('/');
-			}
+		}
 			
 	}
