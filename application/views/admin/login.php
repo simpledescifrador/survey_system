@@ -26,5 +26,5 @@
 		<input type="password" name="password" id="inputPass" class="form-control" placeholder="Password">
 		<label for="inputPass">Password</label>
 	</div>
-	<button type="submit" name="buttonLogin" class="btn btn-md btn-block btn-dark">Login</button>
+	<button type="submit" name="buttonLogin" class="btn btn-md btn-block btn-warning">Login</button>
 	<?php echo form_close(); ?>
