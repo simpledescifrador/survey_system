@@ -6,7 +6,7 @@
 			parent::__construct();
 			$this->tbl_name = 'admin';
 		}
-
+		/* database login validate */
 		public function login($data = array()) 
 		{
 			$condition = "name =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'";

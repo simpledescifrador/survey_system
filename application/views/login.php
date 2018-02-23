@@ -1,6 +1,6 @@
 <body data-gr-c-s-loaded="true">
 	<?php $attributes = array('class' => 'form-signin'); ?>
-	<?php echo form_open('login', $attributes); ?>
+	<?php echo form_open('loginAuth', $attributes); ?>
 	<h3 align="center">Admin Login</h3>
 	<?php if($this->session->flashdata('display_msg') != null): ?>
 	<div align="justify" class="alert alert-success" role="alert">
