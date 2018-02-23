@@ -32,7 +32,7 @@ class Login extends CI_Controller
 		if ($this->form_validation->run() == FALSE) 
 		{
 			$this->session->set_flashdata('validate_msg', validation_errors());
-			redirect('/');
+			redirect('login');
 		} else 
 			{
 				//getting value from the login form

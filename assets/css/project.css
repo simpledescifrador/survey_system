@@ -1,0 +1,37 @@
+body {
+	padding-top: 5rem;
+	padding-bottom: 40px;
+	margin-top: 10px;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+#nav-project {
+	border-bottom: 1px solid lightgrey;
+}
+div.project {
+	border: 1px solid lightgray ;
+	border-left: 5px solid green;
+	border-radius: 3px;	
+	margin-top: 20px;
+	padding: 20px;
+	margin-bottom: 20px;
+	background: white;
+}
+span.project-description {
+	padding: 30px 5px 5px;
+}
+span.project-name {
+	font-size: 1.5rem;
+}
+div.date-modified {
+	font-size: 0.8rem;
+	color: gray;
+}
+div.status {
+	color: green;
+}
+div#projectOption{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

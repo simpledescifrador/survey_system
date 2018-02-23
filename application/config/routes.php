@@ -1,5 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+//PORJECT ROUTES
+$route['project/create'] = 'project/createBlankProject'; 
+$route['project/delete'] = 'project/deleteProject'; 
 // admin_controller routes
 $route['loginAuth'] = 'login/loginAuth';
 $route['logout'] = 'login/logout';
