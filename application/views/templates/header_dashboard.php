@@ -8,12 +8,12 @@
 	<title>
 		<?php echo $title_page; ?> | Market View Research</title>
 	<?php echo link_tag('assets/css/bootstrap.min.css'); ?>
-	<?php echo link_tag('assets/css/custom.css'); ?>
+	<?php echo link_tag('assets/css/dashboard.css'); ?>
 </head>
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	<a href="<?php echo base_url(); ?>" class="nav-brand">MVR</a>
+		<a href="<?php echo base_url(); ?>" class="nav-brand">MVR</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault"
 		aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -25,18 +25,20 @@
 					<?php echo anchor(site_url('dashboard/home'), 'Dashboard<span class="sr-only">(current)</span>', array('class' => 'nav-link')); ?>
 				</li>
 				<li class="nav-item">
-				<a href="<?php echo site_url('mysurvey'); ?>" class="nav-link">My Survey</a>
+					<a href="<?php echo site_url('mysurvey'); ?>" class="nav-link">My Survey</a>
 				</li>
 				<li class="nav-item">
 					<a href="<?php echo site_url('create'); ?>" class="nav-link">Create Survey</a>
 				</li>
 			</ul>
-
-			<!-- <li class="nav-item">
-					<p class="text-success"><?php echo ucfirst($this->session->userdata['logged_in']['username']); ?>,</p>
-				</li> -->
-			<a href="<?php echo site_url('logout'); ?>" class="btn btn-md btn-outline-warning">Logout</a>
-
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<p class="text-success">
+						<?php echo ucfirst($this->session->userdata['logged_in']['username']); ?>,</p>
+				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('logout'); ?>" class="btn btn-md btn-outline-warning">Logout</a>
+				</li>
 			</ul>
 		</div>
 	</nav>

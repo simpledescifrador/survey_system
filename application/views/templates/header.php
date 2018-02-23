@@ -7,6 +7,6 @@
     <meta name="author" content="">
 	<title><?php echo $title_page; ?> | Market View Research</title>
 	<?php echo link_tag('assets/css/bootstrap.min.css'); ?>
-	<?php echo link_tag('assets/css/custom.css'); ?>
+	<?php echo link_tag('assets/css/login.css'); ?>
 </head>
 

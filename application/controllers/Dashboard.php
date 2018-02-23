@@ -14,18 +14,35 @@
 			$this->load->view('templates/footer_dashboard');
 		}
 		public function mySurvey()
-		{
-			$data['title_page'] = ucfirst('my survey');
-			$this->load->view('templates/header_dashboard', $data);
-			$this->load->view('dashboard/my_survey' , $data);
-			$this->load->view('templates/footer_dashboard');
+		{	
+			if(isset($this->session->userdata['logged_in'])) 
+			{
+				$data['title_page'] = ucfirst('my survey');
+				$this->load->view('templates/header_dashboard', $data);
+				$this->load->view('dashboard/my_survey' , $data);
+				$this->load->view('templates/footer_dashboard');
+			}else
+				{
+					
+					redirect('/');
+					
+				}
 		}
 
 		public function createSurvey()
 		{
-			$data['title_page'] = ucfirst('Create Survey');
-			$this->load->view('templates/header_dashboard', $data);
-			$this->load->view('dashboard/create_survey' , $data);
-			$this->load->view('templates/footer_dashboard');
+			if(isset($this->session->userdata['logged_in'])) 
+			{
+				$data['title_page'] = ucfirst('Create Survey');
+				$this->load->view('templates/header_dashboard', $data);
+				$this->load->view('dashboard/create_survey' , $data);
+				$this->load->view('templates/footer_dashboard');
+			}else
+				{
+					
+					redirect('/');
+					
+				}
+
 		}
 	}
