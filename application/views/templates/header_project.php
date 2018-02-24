@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<link rel="shortcut icon" href="/assets/img/favicon.ico">
 	<title>
 		<?php echo $title_page; ?> | MVR Survey System</title>
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
