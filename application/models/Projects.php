@@ -16,9 +16,15 @@ class Projects extends CI_Model
 
 		return $query->result();
 	}
+	// public function getAdminName($id)
+	// {
+	// 	$this->db->select('*');
+	// 	$this->db->from($this->tbl_name);
+	// 	$this->db->
+	// }
 	/* CHECK CREATE BLANK PROJECT IS EXISTING */
 	public function checkDuplicateproject_name($params = array()){
-		$condition = "project_name = " . "'" . $params['project_name'] . "' AND " . "project_created_by = " . "'" . $params['project_created_by'] . "'";
+		$condition = "project_name = " . "'" . $params['project_name'] . "' AND " . "admin_id = " . "'" . $params['admin_id'] . "'";
 		$this->db->select('*');
 		$this->db->from($this->tbl_name);
 		$this->db->where($condition);

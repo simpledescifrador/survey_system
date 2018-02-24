@@ -5,7 +5,7 @@ class Project extends CI_Controller
 	{
 		parent::__construct();
 		$data = array();
-		$this->load->model('projects');
+		$this->load->model(array('projects', 'admin'));
 		$this->load->library('form_validation');
 	}
 	function index()
@@ -21,7 +21,10 @@ class Project extends CI_Controller
 		$project_name = $this->input->post('project_name');
 		$projectCreatedBy = $this->session->userdata['logged_in']['username'];
 		$data['project_name'] = str_replace('_', ' ', $project_name);
-		$data['project_created_by'] = $projectCreatedBy;
+		$array = $this->admin->getIdByName($projectCreatedBy); 
+		foreach ($array as  $value) {
+			$data['admin_id'] = $value->id;
+		}
 		$data['status'] = 1;
 
 		$this->form_validation->set_rules('project_name' , 'Project Name' , 'trim|required|min_length[5]');
@@ -34,12 +37,15 @@ class Project extends CI_Controller
 			{
 				if($this->projects->checkDuplicateproject_name($data))
 				{
-					$this->session->set_flashdata('error_msg', 'Project Name is already created!');
+					$data['error_msg'] = ucwords($data['project_name']) . ' is already created!';
+					$this->session->set_flashdata('error_msg', $data['error_msg']);
 					redirect('project');
 				}else
 					{
-						$this->projects->createProject($data); //INSERT PROJECT NAME
 						
+						$this->projects->createProject($data); //INSERT PROJECT NAME
+						$data['display_msg'] = ucwords($data['project_name'])  . ' is successfully created!';
+						$this->session->set_flashdata('display_msg', $data['display_msg']);
 						redirect('project');
 						
 					}
@@ -47,10 +53,18 @@ class Project extends CI_Controller
 		
 		
 	}
-
-	public function deleteProject()
+	public function editSurvey($id = null)
 	{
-		
-		$this->projects->deleteSeletedProject();
+		$data['title_page'] = ucwords('edit survey');
+		$this->load->view('templates/header_project', $data);
+		$this->load->view('survey');
+		$this->load->view('templates/footer_project');
+	}
+	public function deleteSurvey($id = null)
+	{
+		$this->projects->deleteSeletedProject($id);
+		$data['display_msg'] = 'Successfully Deleted!';
+		$this->session->set_flashdata('display_msg', $data['display_msg']);
+		redirect('project');
 	}
 }

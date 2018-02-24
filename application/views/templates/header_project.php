@@ -12,15 +12,6 @@
 	<?php echo link_tag('/assets/css/bootstrap.min.css'); ?>
 	<?php echo link_tag('/assets/css/project.css'); ?>
 	<?php echo link_tag('/assets/css/normalize.css'); ?>
-	<!-- <script>
-		function createProject() {
-			var projectName = document.getElementById("inputProjectName").value;
-			if(!empty(projectName)){
-				document.getElementById("btnCreateProject").classList.remove("disabled");
-		}
-	}
-	</script> -->
-
 </head>
 
 <body>

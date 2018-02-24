@@ -25,6 +25,17 @@
 					return FALSE;
 				}
 		}
+		public function getIdByName($username)
+		{
+			$condition = "name = " . "'" . $username . "'";
+			$this->db->select('id');
+			$this->db->from($this->tbl_name);
+			$this->db->where($condition);
+
+			$query = $this->db->get();
+
+			return $query->result();
+		}
 
 		public function readAdminInfo($username)
 		{
