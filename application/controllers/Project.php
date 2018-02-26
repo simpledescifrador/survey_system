@@ -10,11 +10,18 @@ class Project extends CI_Controller
 	}
 	function index()
 	{
-		$data['title_page'] = ucwords('My Projects');
-		$data['projects'] = $this->projects->getAllProject();
-		$this->load->view('templates/header_project', $data);
-		$this->load->view('project', $data);
-		$this->load->view('templates/footer_project');
+		if(isset($this->session->userdata['logged_in']))
+		{
+			$data['title_page'] = ucwords('My Projects');
+			$data['projects'] = $this->projects->getAllProject();
+			$this->load->view('templates/header_project', $data);
+			$this->load->view('project', $data);
+			$this->load->view('templates/footer_project');
+		}
+		else
+		{
+			redirect('login');
+		}
 	}
 	public function createBlankProject()
 	{

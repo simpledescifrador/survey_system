@@ -47,7 +47,7 @@
 					</li> -->
 				&nbsp;&nbsp;&nbsp;
 				<li class="nav-item">
-					<a href="<?php echo site_url('logout'); ?>" class="btn btn-md btn-outline-dark">Logout</a>
+					<a id="btn-logout" href="<?php echo site_url('logout'); ?>" class="btn btn-md btn-outline-dark">Logout</a>
 				</li>
 			</ul>
 		</div>
