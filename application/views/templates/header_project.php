@@ -10,9 +10,59 @@
 	<title>
 		<?php echo $title_page; ?> | MVR Survey System</title>
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-	<?php echo link_tag('/assets/css/bootstrap.min.css'); ?>
+	<?php echo link_tag('/node_modules/bootstrap/dist/css/bootstrap.min.css'); ?>
 	<?php echo link_tag('/assets/css/project.css'); ?>
 	<?php echo link_tag('/assets/css/normalize.css'); ?>
+	<script src="<?php echo base_url('/node_modules/jquery/dist/jquery.slim.min.js');?>"></script>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		input[type="text"] {
+			border: 0;
+			margin-bottom: 10px;
+		}
+
+		input[type="text"]:hover {
+			border: 2px lightgray solid;
+		}
+
+		textarea {
+			margin-top: 20px;
+			width: 500px;
+		}
+		.radio-text{
+			width: 50rem;
+		}
+		.q-block {
+			heigth: auto;
+			margin-bottom: 20px;
+			padding: 10px;
+		}
+
+		.q-main:hover {
+			border: 1px green solid;
+		}
+
+		.q-info:hover {
+			border-right: 5px solid darkgray;
+		}
+
+		#q-title {
+			padding: 10px;
+		}
+
+		.q-footer {
+			padding: 20px;
+			text-align: center;
+		}
+
+		.add-block {
+			text-align: center;
+		}
+	</style>
 </head>
 
 <body>
@@ -26,20 +76,13 @@
 
 		<div class="collapse navbar-collapse" id="navbarsDefault">
 			<ul class="navbar-nav mr-auto">
-				<!-- <li class="nav-item active">
-					<?php echo anchor(site_url('dashboard/home'), 'Dashboard<span class="sr-only">(current)</span>', array('class' => 'nav-link')); ?>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo site_url('mysurvey'); ?>" class="nav-link">My Survey</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo site_url('create'); ?>" class="nav-link">Create Survey</a>
-				</li> -->
 			</ul>
 			<ul class="navbar-nav">
 				<li class="nav-item">
+					<?php if(!empty($projects)) : ?>
 					<button id="btnCreateProject" type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#createProject">
-						<i class="fas fa-plus"></i>&nbsp;&nbsp;Create Project</button>
+						<i class="fas fa-plus"></i>&nbsp;&nbsp;Create a Project</button>
+					<?php endif; ?>
 				</li>
 				<!-- <li class="nav-item">
 						<p class="text-success">

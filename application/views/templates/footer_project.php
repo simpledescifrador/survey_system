@@ -1,10 +1,7 @@
-<script src="<?php echo base_url('/assets/js/jquery-slim.min.js'); ?>">
-
-
-</script>
-
 <script src="<?php echo base_url('/assets/js/popper.min.js'); ?>"></script>
-<script src="<?php echo base_url('/assets/js/bootstrap.min.js'); ?>"></script>
+<script src="<?php echo base_url('/assets/js/survey.js'); ?>"></script>
+<script src="<?php echo base_url('/node_modules/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+
 <script>
 	$(document).ready(function () {
 		$('#project-name').on('input', function (e) {
@@ -24,7 +21,9 @@
 				$('#btn-logout').removeClass('btn-outline-danger');
 				$('#btn-logout').addClass('btn-outline-dark');
 			});
-
+		$("#delete").hover(function() {
+			console.log(this);
+		});
 	});
 
 </script>
